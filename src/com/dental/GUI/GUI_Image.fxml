@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerImage">
+   <children>
+      <MenuBar prefHeight="14.0" prefWidth="1065.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="itmOpen" mnemonicParsing="false" onAction="#onClickOpen" text="Open" />
+                  <MenuItem fx:id="itmClose" mnemonicParsing="false" onAction="#onClickClose" text="Close" />
+                  <MenuItem fx:id="itmExit" mnemonicParsing="false" onAction="#onClickExit" text="Exit" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuHelp" mnemonicParsing="false" onAction="#onClickHelp" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+         <effect>
+            <ColorAdjust brightness="0.13" contrast="-0.05" hue="-0.1" saturation="-0.12" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Click Open to open file, Close to close file, Exit to exit this program, About for software information" />
+         </tooltip>
+      </MenuBar>
+      <Button fx:id="btnNext" layoutX="827.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickNext" prefHeight="62.0" prefWidth="199.0" text="Next &gt;&gt;" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas Bold" size="20.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to go to the next stage" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Text layoutX="430.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PREVIEW IMAGE HERE" textAlignment="CENTER" wrappingWidth="240.6708984375">
+         <font>
+            <Font name="Segoe UI Light" size="23.0" />
+         </font>
+      </Text>
+      <HBox fx:id="Preview" alignment="CENTER" layoutX="170.0" layoutY="65.0" prefHeight="430.0" prefWidth="730.0" />
+      <Text layoutX="229.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sharpness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+          <font>
+             <Font name="Segoe UI Light" size="20.0" />
+          </font>
+       </Text>
+       <Slider fx:id="sharpSlider" layoutX="259.0" layoutY="562.0" prefHeight="31.0" prefWidth="180.0">
+         <tooltip>
+            <Tooltip text="Drag to the left to increase sharpness, right to lower sharpness" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Slider>
+       <Slider fx:id="brightSlider" layoutX="259.0" layoutY="605.0" prefHeight="31.0" prefWidth="180.0">
+         <tooltip>
+            <Tooltip text="Drag to the left to increase brightness, right to lower brightness" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Slider>
+       <Text layoutX="229.0" layoutY="607.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="240.6708984375">
+          <font>
+             <Font name="Segoe UI Light" size="20.0" />
+          </font>
+      </Text>
+      <Button fx:id="btnAutoEnhance" layoutX="458.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickAutoEnchance" prefHeight="62.0" prefWidth="199.0" text="Auto-Enhance" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas Bold" size="20.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to enhance image automatically" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ToggleButton fx:id="toggleManualEnhance" layoutX="50.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickToggle" prefHeight="62.0" prefWidth="199.0" text="Manual Enhance">
+         <font>
+            <Font name="Consolas Bold" size="20.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Click to activate the sliders for manual enhance" />
+         </tooltip>
+      </ToggleButton>
+   </children>
+</AnchorPane>

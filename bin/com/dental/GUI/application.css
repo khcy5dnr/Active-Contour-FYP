@@ -1,0 +1,79 @@
+/* This file contains css file for GUI - Automated Image Dental Analysis - Last Updated by Tahirah 1/1/2017 */
+
+AnchorPane{
+   -fx-background-color: #FFFFFF;
+}
+
+MenuBar{
+  	-fx-background-color: #4277f4;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+DialogPane{
+	-fx-background-color: #FFFFFF;
+	-fx-border-color: #D3D3D3;
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #ffffff;
+}
+
+.menu-item .label {
+    -fx-text-fill: #000000;
+}
+
+.menu-item:focused {
+     -fx-background-color: darkgray;
+}
+
+Button{
+  	-fx-background-color: #4277f4;
+    -fx-background-radius: 50, 50, 50, 50;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #FFFFFF;
+}
+  
+.button:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 50, 50, 50, 50;
+    -fx-border-color: #4277f4;
+    -fx-text-fill: #4277f4;
+}
+
+.toggle-button {
+    -fx-background-color: #4277f4;
+    -fx-background-radius: 50, 50, 50, 50;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+    -fx-text-fill: #FFFFFF;
+}
+.toggle-button:selected {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 50, 50, 50, 50;
+    -fx-border-color: #4277f4;
+    -fx-text-fill: #4277f4;
+}
+.toggle-button:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 50, 50, 50, 50;
+    -fx-border-color: #4277f4;
+    -fx-text-fill: #4277f4;
+}
+
+.slider .track{
+	-fx-border-color: #4277f4;
+	-fx-border-radius: 50, 50, 50, 50;
+}
+
+.slider .thumb{
+	-fx-border-color: #4277f4;
+	-fx-border-radius: 50, 50, 50, 50;
+	-fx-background-color: #4277f4;
+}
+
+.slider .thumb:hover{
+	-fx-border-color: darkgray;
+	-fx-border-radius: 50, 50, 50, 50;
+	-fx-background-color: darkgray;
+}

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1065.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dental.GUI.ControllerResult">
+   <children>
+      <MenuBar prefHeight="14.0" prefWidth="1065.0">
+        <menus>
+          <Menu fx:id="menuHelp" mnemonicParsing="false" onAction="#onClickHelp" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Click About for software information" />
+         </tooltip>
+      </MenuBar>
+      <Button fx:id="btnBack" layoutX="50.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="62.0" prefWidth="187.0" text="&lt;&lt; Back">
+         <font>
+            <Font name="Consolas Bold" size="20.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to go to previous stage" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnResult" layoutX="301.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickResults" prefHeight="62.0" prefWidth="187.0" text="Show Results" textAlignment="CENTER">
+         <font>
+            <Font name="Consolas Bold" size="20.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to show the results of the processed image" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <LineChart fx:id="lineChart" layoutX="27.0" layoutY="65.0" prefHeight="414.0" prefWidth="615.0">
+        <xAxis>
+          <NumberAxis fx:id="intensity" label="Percentage of Colour Intensity" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="pixelCount" label="Pixels Count" side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Label layoutX="100.0" layoutY="485.0" prefHeight="44.0" prefWidth="101.0" text="Total Pixels:" />
+      <Label layoutX="387.0" layoutY="496.0" prefHeight="21.0" prefWidth="101.0" text="Total Area (%):">
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font></Label>
+      <TextArea fx:id="totalPixel" editable="false" layoutX="189.0" layoutY="485.0" prefHeight="30.0" prefWidth="130.0">
+         <tooltip>
+            <Tooltip text="Show the total number of pink and magenta pixels" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></TextArea>
+      <TextArea fx:id="totalArea" editable="false" layoutX="497.0" layoutY="487.0" prefHeight="30.0" prefWidth="130.0">
+         <tooltip>
+            <Tooltip text="Show the total area of pink and magenta pixel" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></TextArea>
+      <TableView fx:id="table" layoutX="656.0" layoutY="80.0" prefHeight="333.0" prefWidth="373.0">
+        <columns>
+          <TableColumn fx:id="colPercentage" prefWidth="229.0" text="Percentage of Colour Intensity" />
+          <TableColumn fx:id="colPixel" prefWidth="143.0" text="Pixels Count" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnExit" layoutX="831.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickExit" prefHeight="62.0" prefWidth="187.0" text="Exit">
+         <font>
+            <Font name="Consolas Bold" size="20.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to exit the program" />
+         </tooltip>
+      </Button>
+      <Label layoutX="656.0" layoutY="498.0" text="Clustering Algorithm:">
+         <tooltip>
+            <Tooltip text="Select one clustering algorithm to run on the image" />
+         </tooltip>
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnShowImage" layoutX="576.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickPopup" prefHeight="62.0" prefWidth="187.0" text="Show Image">
+         <font>
+            <Font name="Consolas Bold" size="20.0" />
+         </font>
+         <tooltip>
+            <Tooltip text="Click this button to view the segmented image" />
+         </tooltip>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ComboBox fx:id="comboCluster" layoutX="813.0" layoutY="484.0" onAction="#onClickCombo" prefHeight="45.0" prefWidth="214.0" promptText="Please select one">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ComboBox>
+   </children>
+</AnchorPane>
