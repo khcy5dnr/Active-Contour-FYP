@@ -16,8 +16,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import com.dental.ClusterAlgorithm.ClusteringAlgorithm;
-import com.dental.Result.Result;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.highgui.Highgui;
+
+import com.dental.ClusterAlgorithm.EdgeDetection;
 import com.dental.Result.Table;
 
 import javafx.application.Platform;
@@ -46,7 +49,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -107,15 +109,19 @@ public class ControllerResult {
 	
 	private final IntegerProperty state = new SimpleIntegerProperty();
 	
-	ObservableList<String> clusteringAlgorithm = FXCollections.observableArrayList("K-Means", "Mean Shift");
+	ObservableList<String> clusteringAlgorithm = FXCollections.observableArrayList(
+			"Sobel", "Kirsch", "Prewitt", "Laplacian", "Laplacian of Gaussian", "Robinson",	"Canny");
+	
+	private Mat preprocessImage;
 	
 	@FXML
 	private void initialize() {
 		// Set the list of clustering algorithm for Combo Box
 		comboCluster.setItems(clusteringAlgorithm);
+		comboCluster.setVisibleRowCount(3);
 		
 		// Set an integer value to the clustering algorithm
-		state.bind(Bindings.when(comboCluster.valueProperty().isEqualTo("K-Means")).then(1).otherwise(2));
+		state.bind(Bindings.when(comboCluster.valueProperty().isEqualTo("Sobel")).then(1).otherwise(2));
 		
 		// Disable the Show Image button
 		btnShowImage.setDisable(true);
@@ -126,6 +132,7 @@ public class ControllerResult {
 	
 	@FXML
 	private void onClickCombo(){
+		System.out.println(comboCluster.getValue());
 		
 		// Check the clustering algorithm is chosen or not
 		if(comboCluster.getValue() != null){
@@ -136,7 +143,7 @@ public class ControllerResult {
 			 @SuppressWarnings("rawtypes")
 			@Override 
 			public void changed(ObservableValue ov, String t, String t1) {
-		          if(comboCluster.valueProperty().isEqualTo("K-Means").toString() != t1){
+		          if(comboCluster.valueProperty().isEqualTo("Sobel").toString() != t1){
 		        	  btnShowImage.setDisable(true);
 		          }
 		        }  
@@ -145,7 +152,10 @@ public class ControllerResult {
 	
 	@FXML
 	private void onClickResults() throws IOException {	
-		new ClusteringAlgorithm(state.get());
+		
+		new EdgeDetection(comboCluster.getValue());
+		btnShowImage.setDisable(false);
+		/*new ClusteringAlgorithm(state.get());
 		Result newResult = new Result();
 		if(newResult.getPixelCalculate().isFlag_NoPink() == false){
 			totalPixel.setText(Integer.toString((int)newResult.getTotalPixel()));
@@ -159,7 +169,7 @@ public class ControllerResult {
 			setTable();
 			
 			// Enable the Show Image button
-			btnShowImage.setDisable(false);
+			
 		}
 		else if(newResult.getPixelCalculate().isFlag_NoPink() == true){
 			// Alert box appears if no pink/magenta found 
@@ -170,7 +180,7 @@ public class ControllerResult {
 	    	alert.setHeaderText("No Pink or Magenta Pixel");
 	    	alert.setContentText("Image uploaded does not contain either pink or magenta pixel.\nPlease upload a different image.");
 	    	alert.showAndWait();
-		}
+		}*/
 	}
 		
 	// Show result on graph
@@ -201,26 +211,6 @@ public class ControllerResult {
 	    // Display line chart
 		lineChart.getData().add(series);
 		
-	}
-	
-	// Show the result on table
-	@SuppressWarnings("rawtypes")
-	private void setTable(){
-		
-		colPercentage.setCellValueFactory(new PropertyValueFactory<Table, Integer>("percentage"));
-		colPixel.setCellValueFactory(new PropertyValueFactory<Table, Integer>("pixelCount"));
-		Set set = graph.entrySet();
-	    Iterator i = set.iterator();
-	    ObservableList<Table> data = FXCollections.observableArrayList();
-	    
-	    // Add data to the table
-	    while(i.hasNext()) {
-	        Map.Entry me = (Map.Entry)i.next();
-	        data.add(new Table((int)me.getKey(), (int)me.getValue()));
-	     }
-	    
-	    // Display table
-		table.setItems(data);
 	}
 	
 	@FXML

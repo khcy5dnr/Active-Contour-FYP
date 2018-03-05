@@ -242,7 +242,7 @@ public class ControllerImage extends Main implements Initializable {
 		    
 		    
 		    // Check if the image size is acceptable
-		    if(width>1366&&height>768||width>1366||height>768) {
+		    if(width>1366&&height>768||width>1366||height>1024) {
 		    	
 		    	// Disable the Close menu item
 				itmClose.setDisable(true);
@@ -277,7 +277,7 @@ public class ControllerImage extends Main implements Initializable {
 		   		imageView.setImage(image);
 		   		
 		   		// Only ImageView is resized to fit not the original "image"
-		   		imageView.setFitWidth(300);
+		   		imageView.setFitWidth(500);
 		   		
 		   		// Making sure previewed image is not too big for screen
 		   		imageView.setPreserveRatio(true);

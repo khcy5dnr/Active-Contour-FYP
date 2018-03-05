@@ -60,7 +60,7 @@ public class ControllerPopup implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		File file = new File("resource/segmented.jpg");
+		File file = new File("resource/clustered.jpg");
 		FileReader fr = null;
 		try	
 		{
